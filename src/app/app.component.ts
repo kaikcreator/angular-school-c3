@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { PostsService } from './services/posts.service';
+import { SearchboxComponent } from './searchbox/searchbox.component';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,17 @@ import { PostsService } from './services/posts.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild('search') searchBox:SearchboxComponent;
   public posts;
   constructor(private postsService:PostsService){}
 
+  ngOnInit(){
+    this.searchBox.value
+    .pipe( switchMap(val => this.searchPosts(val)) )
+    .subscribe(data => this.posts = data);
+  }
+
   public searchPosts(text){
-    this.postsService.search(text)
-    .subscribe(data => this.posts = data );
+    return this.postsService.search(text)
   }
 }

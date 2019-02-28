@@ -3,7 +3,7 @@
   <h1>
     Search my posts!
   </h1>
-  <app-searchbox (value)="searchPosts($event)"></app-searchbox>
+  <app-searchbox #search></app-searchbox>
   <app-list>
     <app-card *ngFor="let post of posts" [item]="post"></app-card>
   </app-list>
