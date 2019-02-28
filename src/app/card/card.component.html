@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="image" [style.background-image]="'url(' + item.featured_media_src + ')'"></div>
+  <div class="content">
+      <h2 [innerHTML]="item.title"></h2>
+      <div class="date">{{item.date | date: 'longDate'}}</div>
+  </div>
+</div>
