@@ -5,6 +5,6 @@
   </h1>
   <app-searchbox #search></app-searchbox>
   <app-list>
-    <app-card *ngFor="let post of posts" [item]="post"></app-card>
+    <app-card *ngFor="let post of posts$ | async" [item]="post"></app-card>
   </app-list>
 </div>
