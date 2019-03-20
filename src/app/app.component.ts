@@ -15,11 +15,8 @@ export class AppComponent {
 
   ngOnInit(){
     this.searchBox.value
-    .pipe( switchMap(val => this.searchPosts(val)) )
+    .pipe( switchMap(val => this.postsService.search(val)))
     .subscribe(data => this.posts = data);
   }
 
-  public searchPosts(text){
-    return this.postsService.search(text)
-  }
 }
