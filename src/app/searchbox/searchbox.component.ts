@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 @Component({
@@ -6,14 +6,14 @@ import { NgModel } from '@angular/forms';
   templateUrl: './searchbox.component.html',
   styleUrls: ['./searchbox.component.scss']
 })
-export class SearchboxComponent implements OnInit {
-  @ViewChild('searchBox', { static: true }) public searchBox:NgModel;
+export class SearchboxComponent implements AfterViewInit {
+  @ViewChild('searchBox', { static: true }) public searchBox: NgModel;
   @Output() value: EventEmitter<string> = new EventEmitter();
-  public text:string = '';
-  
+  public text = '';
+
   constructor() { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.searchBox.valueChanges.subscribe(evt => this.value.emit(evt));
   }
 
