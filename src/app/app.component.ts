@@ -9,14 +9,14 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild('search') searchBox:SearchboxComponent;
+  @ViewChild('search', { static: true }) searchBox: SearchboxComponent;
   public posts;
-  constructor(private postsService:PostsService){}
+  constructor(private postsService: PostsService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.searchBox.value
-    .pipe( switchMap(val => this.postsService.search(val)))
-    .subscribe(data => this.posts = data);
+      .pipe(switchMap(val => this.postsService.search(val)))
+      .subscribe(data => this.posts = data);
   }
 
 }
