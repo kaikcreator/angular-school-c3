@@ -9,7 +9,7 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild('search') searchBox:SearchboxComponent;
+  @ViewChild('search', {static: true}) searchBox:SearchboxComponent;
   public posts;
   constructor(private postsService:PostsService){}
 
