@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "angular-school-c3"
+  "defaultProject": "angular-school-c3",
+  "cli": {
+    "analytics": false
+  }
 }
